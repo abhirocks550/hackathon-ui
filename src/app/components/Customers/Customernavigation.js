@@ -20,8 +20,8 @@ class Customernavigation extends React.Component {
                         <span>Banking system </span>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li><Link to="/" activeClassName="active" >Apply Loan</Link></li>
-                        <li><Link to="/about" activeClassName="active">See Approvals</Link></li>
+                        <li><Link to="/customers" activeClassName="active" >Apply Loan</Link></li>
+                        <li><Link to="/loanstatus" activeClassName="active">See Approvals</Link></li>
                     </ul>
                 </div>
             </nav>

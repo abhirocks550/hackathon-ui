@@ -5,6 +5,7 @@ import EmiCalculator from '../components/EmiCalculator/EmiCalculator';
 import Login from '../components/Login/Login';
 import './App.css';
 import Customers from '../components/Customers/Customers';
+import { browserHistory } from 'react-router';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,20 +19,11 @@ class App extends React.Component {
 
   }
 
-  updateUserName = (event) => {
+  updateInput = (event) => {
     let selectedUsername = event.target.value;
 
     this.setState({
-        username: selectedUsername,
-      });
-    console.log(this.state);
-  };
-
-  updatePassword = (event) => {
-    let selectedPassword = event.target.value;
-
-    this.setState({
-        password: selectedPassword,
+        [event.target.name]: event.target.value,
       });
     console.log(this.state);
   };
@@ -50,7 +42,13 @@ class App extends React.Component {
     this.setState({
       role: 'customer',
     });
-    console.log(this.state);
+
+    setTimeout(() =>{
+          browserHistory.push({
+          pathname: '/customers',
+          state: this.state,
+        });
+    }, 1000);
   };
 
   render() {
@@ -65,22 +63,22 @@ class App extends React.Component {
 
     else {
       customers = (
-              <div className="container">
-        <NavBar />
-        <div className="row">
-          <div className="col-sm-6 col-md-6 emi">
-            <h2>Emi Calculator</h2>
-            <EmiCalculator />
+      <div className="container">
+          <NavBar />
+          <div className="row">
+            <div className="col-sm-6 col-md-6 emi">
+              <h2>Emi Calculator</h2>
+              <EmiCalculator />
+            </div>
+            <div className="col-sm-5 col-md-5 emi">
+              <Login
+              updateInput={this.updateInput}
+              state={this.state}
+              loginUser={this.loginUser}
+              />
+            </div>
           </div>
-          <div className="col-sm-5 col-md-5 emi">
-            <Login
-            updateUserName={this.updateUserName}
-            updatePassword={this.updatePassword}
-            loginUser={this.loginUser}
-             />
-          </div>
-        </div>
-        {this.props.children}
+          {this.props.children}
       </div>
       );
     }

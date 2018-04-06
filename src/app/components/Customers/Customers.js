@@ -6,7 +6,7 @@ import CustomerNavigation from './Customernavigation';
 class Customers extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props.location);
     this.state = {
     };
 
@@ -16,6 +16,7 @@ class Customers extends React.Component {
     return (
         <div>
             <CustomerNavigation />
+            {this.props.children}
         </div>
     );
   }

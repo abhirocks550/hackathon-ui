@@ -9,11 +9,11 @@ const Login = (props) => {
             <form>
                 <div className="form-group">
                 <label>Username:</label>
-                <input type="text" onChange={props.updateUserName} className="form-control" id="uname" placeholder="Username" name="username" />
+                <input type="text" value={props.state.username} onChange={props.updateInput} className="form-control" id="uname" placeholder="Username" name="username" />
                 </div>
                 <div className="form-group">
                 <label>Password:</label>
-                <input type="password" onChange={props.password} required className="form-control" id="password" placeholder="Enter password" name="password" />
+                <input type="password" value={props.state.password} onChange={props.updateInput} required className="form-control" id="password" placeholder="Enter password" name="password" />
                 </div>
                 <button type="submit" onClick={props.loginUser} className="btn btn-default">Sign in</button>
             </form>
