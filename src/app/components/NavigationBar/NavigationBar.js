@@ -1,12 +1,9 @@
 import React from 'react';
 import './NavigationBar.css';
 import { Link, IndexLink } from 'react-router';
-import axios from 'axios';
 
 const NavBar = (props) => {
 
-    axios.get('https://api.github.com/users/maecapozzi')
-    .then(response => console.log(response));
     let navBarSection =
         <section id="navBar-section">
             <nav className="navbar navbar-inverse">

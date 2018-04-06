@@ -1,8 +1,57 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import './EmiCalculator.css';
+import axios from 'axios';
 
-const EmiCalculator = (props) => {
+class EmiCalculator extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        amount: '',
+        tenure: 5,
+        emiMessage: '',
+      };
+
+    this.updateAmount = this.updateAmount.bind(this);
+    this.updateTenure = this.updateTenure.bind(this);
+    this.calculateEmi = this.calculateEmi.bind(this);
+  }
+
+  updateAmount(event) {
+    let SelectedAmount = event.target.value;
+    this.setState({
+        amount: SelectedAmount,
+      });
+  }
+
+  updateTenure(event) {
+    let Selectedtenure = event.target.value;
+    this.setState({
+        tenure: Selectedtenure,
+      });
+  }
+
+  calculateEmi(event) {
+    event.preventDefault();
+    let amount = this.state.amount;
+    let tenure = this.state.tenure;
+
+    let url = `http://10.117.189.16:8080/loan_app/emiservice/emi/${amount}/${tenure}`;
+
+    axios({
+      method: 'get',
+      url: url,
+    }).then((response) => {
+        console.log(response);
+        debugger;
+        this.setState({
+            emiMessage: response.data,
+          });
+      });
+  }
+
+  render() {
     return (
        <div>
             <form>
@@ -12,11 +61,14 @@ const EmiCalculator = (props) => {
                 </div>
                 <div className="form-group">
                 <label>Amount:</label>
-                <input type="text" className="form-control" id="amount" placeholder="Enter Amount" name="amount" />
+                <input type="text" onChange={this.updateAmount} required="required" value={this.state.amount}
+                className="form-control" id="amount" placeholder="Enter Amount" name="amount" />
                 </div>
                 <div className="form-group">
                 <label>Tenure: </label><br/>
-                <select id="tenure">
+                <select id="tenure"
+                value={this.state.tenure}
+                defaultValue={this.state.tenure} onChange={this.updateTenure}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -28,12 +80,15 @@ const EmiCalculator = (props) => {
                 <label>Rate of interest:</label>
                 <input type="text" className="form-control" id="roi" placeholder="8.5%" name="roi" disabled />
                 </div>
-                <button type="button" className="btn btn-primary">Calculate</button>
+                <button type="submit" onClick={this.calculateEmi} className="btn btn-primary">Calculate</button>
             </form>
 
-            <div className="message"></div>
+            <div className="message">
+                <h4>Calculated EMI : {this.state.emiMessage}</h4></div>
        </div>
     );
-  };
+  }
+
+};
 
 export default EmiCalculator;

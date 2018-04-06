@@ -13,7 +13,6 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} >
-                <IndexRoute component={Home} />
               <Route path="about" component={About} />  
             </Route>
         </Router>
