@@ -3,6 +3,8 @@ import { Link, IndexLink } from 'react-router';
 import axios from 'axios';
 
 const LoanStatus = (props) => {
+    console.log(window.localStorage.getItem('Customerstate'));
+
     return (
         <div>
             <h2>Loan status</h2>
