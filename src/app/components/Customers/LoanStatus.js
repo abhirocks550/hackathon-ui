@@ -30,7 +30,6 @@ class LoanStatus extends React.Component  {
     axios.get(url)
     .then((response) => {
         console.log(response.data);
-        debugger;
         this.setState({
             disburstment: response.data,
           });
