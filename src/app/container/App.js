@@ -72,16 +72,16 @@ class App extends React.Component {
       <div className="container-fluid">
           <NavBar />
           <div className="row">
-            <div className="col-sm-6 col-md-6 emi">
-              <h2>Emi Calculator</h2>
-              <EmiCalculator />
-            </div>
-            <div className="col-sm-5 col-md-5 emi">
+            <div className="col-sm-6 col-md6 emi login">
               <Login
               updateInput={this.updateInput}
               state={this.state}
               loginUser={this.loginUser}
               />
+            </div>
+             <div className="col-sm-5 col-md-5 emi">
+              <h2>Emi Calculator</h2>
+              <EmiCalculator />
             </div>
           </div>
           {this.props.children}
