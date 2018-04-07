@@ -39,8 +39,6 @@ class ApplyLoan extends React.Component  {
     let tenure = this.state.tenure;
     let username = retrievedObject.username;
 
-    debugger;
-
     axios({
       method: 'post',
       url: 'http://10.117.189.243:8080/loan_app/loanservice/applyloan',

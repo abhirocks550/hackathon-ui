@@ -44,7 +44,6 @@ class EmiCalculator extends React.Component {
       url: url,
     }).then((response) => {
         console.log(response);
-        debugger;
         this.setState({
             emiMessage: response.data,
           });
