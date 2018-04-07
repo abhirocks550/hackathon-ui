@@ -11,7 +11,6 @@ class BankEmployee extends React.Component {
   render() {
     var retrievedObject = JSON.parse(localStorage.getItem('Customerstate'));
     let customer = null;
-    debugger;
     if (retrievedObject !== null && retrievedObject.role === 'bank') {
       customer = (
         <div>

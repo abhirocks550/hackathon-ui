@@ -85,7 +85,7 @@ class EmiCalculator extends React.Component {
 
             <div className="message">
                 <h4>Calculated EMI : {this.state.emiMessage}</h4></div>
-       </div>
+            </div>
     );
   }
 
