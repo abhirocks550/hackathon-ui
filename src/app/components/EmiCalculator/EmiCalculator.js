@@ -37,7 +37,7 @@ class EmiCalculator extends React.Component {
     let amount = this.state.amount;
     let tenure = this.state.tenure;
 
-    let url = `http://10.117.189.243:8080/loan_app/loanservice/emi/${amount}/${tenure}`;
+    let url = `http://10.117.189.16:8080/loan_app/loanservice/emi/${amount}/${tenure}`;
 
     axios({
       method: 'get',

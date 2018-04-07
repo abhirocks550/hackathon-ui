@@ -41,7 +41,7 @@ class ApplyLoan extends React.Component  {
 
     axios({
       method: 'post',
-      url: 'http://10.117.189.243:8080/loan_app/loanservice/applyloan',
+      url: 'http://10.117.189.16:8080/loan_app/loanservice/applyloan',
       data: {
           username: username,
           amount: amount,
