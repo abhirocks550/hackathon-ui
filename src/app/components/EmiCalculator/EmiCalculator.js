@@ -78,7 +78,7 @@ class EmiCalculator extends React.Component {
                 </div>
                 <div className="form-group">
                 <label>Rate of interest:</label>
-                <input type="text" className="form-control" id="roi" placeholder="8.5%" name="roi" disabled />
+                <input type="text" className="form-control" id="roi" placeholder="9%" name="roi" disabled />
                 </div>
                 <button type="submit" onClick={this.calculateEmi} className="btn btn-primary">Submit</button>
             </form>

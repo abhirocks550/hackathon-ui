@@ -13,11 +13,9 @@ class ApprovalStatus extends React.Component {
   }
 
   approveReject = (event, status, user) => {
-      debugger;
       let button = status;
       var retrievedObject = JSON.parse(localStorage.getItem('Customerstate'));
 
-      debugger;
       axios({
         method: 'post',
         url: 'http://10.117.189.16:8080/loan_app/loanservice/loandecision',
