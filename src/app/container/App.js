@@ -6,6 +6,7 @@ import Login from '../components/Login/Login';
 import './App.css';
 import Customers from '../components/Customers/Customers';
 import { browserHistory } from 'react-router';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,32 +31,25 @@ class App extends React.Component {
 
   loginUser = (event) => {
     event.preventDefault();
-
-    // axios({
-    //   method: 'post',
-    //   url: '/user/12345',
-    //   data: {
-    //       username: 'Fred',
-    //       password: 'Flintstone',
-    //     },
-    // });
-    this.setState({
-      role: 'customer',
+    axios({
+      method: 'post',
+      url: 'http://10.117.189.16:8080/loan_app/loanservice/login',
+      data: {
+          username: this.state.username,
+          password: this.state.password,
+        },
+    }).then((response) => {
+      this.setState({
+        role: 'customer',
+      });
+      localStorage.setItem('Customerstate', JSON.stringify(this.state));
     });
-
-    setTimeout(() =>{
-          browserHistory.push({
-          pathname: '/customers',
-          state: this.state,
-        });
-    }, 1000);
   };
 
   render() {
 
     let customers = null;
-
-    if (this.state.role === 'customer') {
+    if (localStorage.getItem('Customerstate') && this.state.role === 'customer') {
       customers = (
         <Customers />
       );
@@ -82,6 +76,7 @@ class App extends React.Component {
       </div>
       );
     }
+
     return (
       <div>
         { customers }

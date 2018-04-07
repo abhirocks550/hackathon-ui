@@ -6,20 +6,30 @@ import CustomerNavigation from './Customernavigation';
 class Customers extends React.Component {
   constructor(props) {
     super(props);
-    console.log('Location', JSON.stringify(this.props.location.state));
-    window.localStorage.setItem('Customerstate', this.props.location.state);
-
-    this.state = {
-
-    };
-
+    console.log(this.props.location);
   }
 
   render() {
-    return (
-      <div>
+    var retrievedObject = JSON.parse(localStorage.getItem('Customerstate'));
+    let customer = null;
+    debugger;
+    if (retrievedObject !== null && retrievedObject.role === 'customer') {
+      customer = (
+        <div>
         <CustomerNavigation />
         {this.props.children}
+      </div>
+      );
+    } else {
+      customer = (
+      <div>
+        <h2>Please Login to access this page</h2>
+      </div>);
+    }
+
+    return (
+      <div>
+      {customer}
       </div>
     );
   }

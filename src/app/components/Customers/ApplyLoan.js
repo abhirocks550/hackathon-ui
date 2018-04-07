@@ -2,8 +2,18 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import axios from 'axios';
 
-const ApplyLoan = (props) => {
-    console.log(window.localStorage.getItem('Customerstate'));
+class ApplyLoan extends React.Component  {
+  constructor(props) {
+    super(props);
+    this.state =
+        {
+          amount: '',
+          tenure: 5,
+          emiMessage: '',
+        };
+  }
+
+  render() {
 
     return (
         <div>
@@ -11,5 +21,6 @@ const ApplyLoan = (props) => {
         </div>
     );
   }
+}
 
 export default ApplyLoan;
