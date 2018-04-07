@@ -5,6 +5,7 @@ import EmiCalculator from '../components/EmiCalculator/EmiCalculator';
 import Login from '../components/Login/Login';
 import './App.css';
 import Customers from '../components/Customers/Customers';
+import BankEmployee from '../components/BankEmployee/BankEmployee';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
@@ -30,10 +31,11 @@ class App extends React.Component {
   };
 
   loginUser = (event) => {
+    debugger;
     event.preventDefault();
     axios({
       method: 'post',
-      url: 'http://10.117.189.243:8080/loan_app/loanservice/login',
+      url: 'http://10.117.189.16:8080/loan_app/loanservice/login',
       data: {
           username: this.state.username,
           password: this.state.password,
@@ -56,7 +58,6 @@ class App extends React.Component {
   };
 
   render() {
-
     let customers = null;
     if (localStorage.getItem('Customerstate') && this.state.role === 'customer') {
       customers = (
@@ -64,11 +65,11 @@ class App extends React.Component {
       );
     } else if (localStorage.getItem('Customerstate') && this.state.role === 'bank') {
       customers = (
-        <h2>bank employee</h2>
+        <BankEmployee />
       );
     } else {
       customers = (
-      <div className="container">
+      <div className="container-fluid">
           <NavBar />
           <div className="row">
             <div className="col-sm-6 col-md-6 emi">
