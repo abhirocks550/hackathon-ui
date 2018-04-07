@@ -5,7 +5,7 @@ import axios from 'axios';
 const Login = (props) => {
     return (
         <div>
-            <h2>Customer Login Form</h2>
+            <h2>Login</h2>
             <form>
                 <div className="form-group">
                 <label>Username:</label>

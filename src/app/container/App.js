@@ -17,6 +17,7 @@ class App extends React.Component {
         username: '',
         password: '',
         role: '',
+        errorMessage: '',
       };
 
   }
@@ -43,15 +44,21 @@ class App extends React.Component {
       if (response.data.valid && response.data.role === 'CUST') {
         this.setState({
           role: 'customer',
+          errorMessage: '',
         });
         localStorage.setItem('Customerstate', JSON.stringify(this.state));
-      }
-
-      if (response.data.valid && response.data.role === 'BANK') {
+        this.forceUpdate();
+      } else if (response.data.valid && response.data.role === 'BANK') {
         this.setState({
           role: 'bank',
+          errorMessage: '',
         });
         localStorage.setItem('Customerstate', JSON.stringify(this.state));
+        this.forceUpdate();
+      } else {
+        this.setState({
+          errorMessage: 'Username and password is incorrect',
+        });
       }
     });
   };
@@ -77,6 +84,7 @@ class App extends React.Component {
               state={this.state}
               loginUser={this.loginUser}
               />
+              <h3>{this.state.errorMessage}</h3>
             </div>
              <div className="col-sm-5 col-md-5 emi">
               <h2>Emi Calculator</h2>

@@ -11,7 +11,6 @@ class BankNavigation extends React.Component {
   }
 
   logOut() {
-    alert('logout');
     localStorage.clear();
   }
 

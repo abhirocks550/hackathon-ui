@@ -60,7 +60,7 @@ class EmiCalculator extends React.Component {
                 </div>
                 <div className="form-group">
                 <label>Amount:</label>
-                <input type="text" onChange={this.updateAmount} required="required" value={this.state.amount}
+                <input type="number" onChange={this.updateAmount} required="required" value={this.state.amount}
                 className="form-control" id="amount" placeholder="Enter Amount" name="amount" />
                 </div>
                 <div className="form-group">

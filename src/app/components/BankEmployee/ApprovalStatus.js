@@ -73,7 +73,7 @@ class ApprovalStatus extends React.Component {
             <div className="message">
                 <h4>{this.state.message}</h4>
             </div>
-            <table className="table table-condensed">
+            <table className="table table-bordered">
                 <thead>
                 <tr>
                     <th>Username</th>

@@ -9,6 +9,7 @@ class LoanStatus extends React.Component  {
     this.state = {
         requestList: [],
         message: '',
+        disburstment: {},
       };
   }
 
@@ -23,16 +24,34 @@ class LoanStatus extends React.Component  {
             requestList: response.data,
           });
       });
+
+    let loanDiburstMent = 'http://10.117.189.16:8080/loan_app/loanservice/getloandisbursement/' + retrievedObject.username;
+
+    axios.get(url)
+    .then((response) => {
+        console.log(response.data);
+        debugger;
+        this.setState({
+            disburstment: response.data,
+          });
+      });
   }
 
   render() {
+    let emiMessage = '';
+    if (this.state.disburstment.disburstment) {
+      emiMessage = (
+           <h3>Your Emi is {this.state.requestList.emi}</h3>
+        );
+    }
+
     return (
          <div className="container">
             <h2>Loan request status</h2>
             <div className="message">
                 <h4>{this.state.message}</h4>
             </div>
-            <table className="table table-condensed">
+            <table className="table table-bordered">
                 <thead>
                 <tr>
                     <th>Username</th>
@@ -47,9 +66,10 @@ class LoanStatus extends React.Component  {
                     <td>{this.state.requestList.tenure}</td>
                     <td>{this.state.requestList.amount}</td>
                     <td>{this.state.requestList.status}</td>
-                   </tr>;
+                   </tr>
                 </tbody>
             </table>
+            {emiMessage}
         </div>
 
     );
