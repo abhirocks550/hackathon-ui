@@ -28,11 +28,19 @@ class ApprovalStatus extends React.Component {
       }).then((response) => {
           if (response.status === 204) {
             this.setState({
-                message: 'User loan request has been ' + button + 'ed',
+                message: 'User loan request has been ' + button,
               });
+
+            axios.get('http://10.117.189.16:8080/loan_app/loanservice/getloans')
+               .then((response) => {
+                    console.log(response.data);
+                    this.setState({
+                        userList: response.data,
+                      });
+                  });
           }
         });
-    }
+    };
 
   componentWillMount() {
     axios.get('http://10.117.189.16:8080/loan_app/loanservice/getloans')
