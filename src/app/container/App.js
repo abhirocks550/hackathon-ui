@@ -33,16 +33,19 @@ class App extends React.Component {
     event.preventDefault();
     axios({
       method: 'post',
-      url: 'http://10.117.189.16:8080/loan_app/loanservice/login',
+      url: 'http://10.117.189.243:8080/loan_app/loanservice/login',
       data: {
           username: this.state.username,
           password: this.state.password,
         },
     }).then((response) => {
-      this.setState({
-        role: 'customer',
-      });
-      localStorage.setItem('Customerstate', JSON.stringify(this.state));
+      console.log(response);
+      if (response.data.valid) {
+        this.setState({
+          role: 'customer',
+        });
+        localStorage.setItem('Customerstate', JSON.stringify(this.state));
+      }
     });
   };
 

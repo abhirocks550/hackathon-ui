@@ -37,7 +37,7 @@ class EmiCalculator extends React.Component {
     let amount = this.state.amount;
     let tenure = this.state.tenure;
 
-    let url = `http://10.117.189.16:8080/loan_app/emiservice/emi/${amount}/${tenure}`;
+    let url = `http://10.117.189.243:8080/loan_app/loanservice/emi/${amount}/${tenure}`;
 
     axios({
       method: 'get',
@@ -80,7 +80,7 @@ class EmiCalculator extends React.Component {
                 <label>Rate of interest:</label>
                 <input type="text" className="form-control" id="roi" placeholder="8.5%" name="roi" disabled />
                 </div>
-                <button type="submit" onClick={this.calculateEmi} className="btn btn-primary">Calculate</button>
+                <button type="submit" onClick={this.calculateEmi} className="btn btn-primary">Submit</button>
             </form>
 
             <div className="message">
