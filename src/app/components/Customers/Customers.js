@@ -21,8 +21,12 @@ class Customers extends React.Component {
       );
     } else {
       customer = (
-      <div>
+      <div className="container">
         <h2>Please Login to access this page</h2>
+        <Link to="/" activeClassName="active"><button className="btn btn-lg btn-primary" value="Login">
+          Login
+        </button>
+        </Link>
       </div>);
     }
 

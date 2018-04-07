@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const LoanStatus = (props) => {
     return (
-        <div>
+        <div className="container">
             <h2>Loan status</h2>
         </div>
     );
