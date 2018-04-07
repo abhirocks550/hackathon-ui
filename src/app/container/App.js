@@ -39,10 +39,16 @@ class App extends React.Component {
           password: this.state.password,
         },
     }).then((response) => {
-      console.log(response);
-      if (response.data.valid) {
+      if (response.data.valid && response.data.role === 'CUST') {
         this.setState({
           role: 'customer',
+        });
+        localStorage.setItem('Customerstate', JSON.stringify(this.state));
+      }
+
+      if (response.data.valid && response.data.role === 'BANK') {
+        this.setState({
+          role: 'bank',
         });
         localStorage.setItem('Customerstate', JSON.stringify(this.state));
       }
@@ -56,9 +62,11 @@ class App extends React.Component {
       customers = (
         <Customers />
       );
-    }
-
-    else {
+    } else if (localStorage.getItem('Customerstate') && this.state.role === 'bank') {
+      customers = (
+        <h2>bank employee</h2>
+      );
+    } else {
       customers = (
       <div className="container">
           <NavBar />
